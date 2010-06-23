@@ -123,7 +123,9 @@ set_property(
   PROPERTY LABELS Turbo_Libs-src-$ENV{WM_PROJECT_VERSION}
 )
 
-add_custom_target (Turbo_Libs-rotorStatorInterfaces-$ENV{WM_PROJECT_VERSION} ALL
+# rotorStatorInterfaces is not compiled by default
+# MB 22/06/2010
+add_custom_target (Turbo_Libs-rotorStatorInterfaces-$ENV{WM_PROJECT_VERSION}
   wmake libso
   WORKING_DIRECTORY ${TURBOMACHINERY_OSIG_ROOT}/rotorStatorInterfaces
 )
