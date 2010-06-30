@@ -33,11 +33,16 @@
 
 #set -x
 
-# This environment variable must point to the location of the Turbomachinery OSIG shared
-# space from the section Breeder_1.5 of your local Subversion repository working copy
-# Something like: /someAbsolutePath/Breeder_1.5/OSIG/TurboMachinery
+# Environment variable : BREEDER_15_DIR:
 #
-# export BREEDER_OSIG_TURBOMACHINERY_DIR=please_initialize_me
+# This environment variable must point to the location of the Breeder_1.5 section 
+# of your local working copy of the openfoam-extend Subversion repository
+#
+# Something like this: 
+#
+# export BREEDER_15_DIR=/someAbsolutePath/Breeder_1.5
+
+export BREEDER_OSIG_TURBOMACHINERY_DIR=${BREEDER_15_DIR}/OSIG/TurboMachinery
 
 # This environment variable must point to the location of the test harness main directory
 export FOAM_TEST_HARNESS_DIR=$(dirname $PWD)
@@ -45,14 +50,14 @@ export FOAM_TEST_HARNESS_DIR=$(dirname $PWD)
 # First, some sanity checks
 #
 
-# We need $BREEDER_OSIG_TURBOMACHINERY_DIR
-if [ ! -n "$BREEDER_OSIG_TURBOMACHINERY_DIR" ]
+# We need $BREEDER_15_DIR
+if [ ! -n "${BREEDER_15_DIR}" ]
 then
     echo "Warning:"
-    echo "  Missing environment variable \$BREEDER_OSIG_TURBOMACHINERY_DIR. Stopping." 
+    echo "  Missing environment variable \$BREEDER_15_DIR. Stopping." 
     echo "  Please make sure to initialize this environment variable to "
-    echo "  the directory where you have installed the Turbomachinery shared files from"
-    echo "  the Breeder_1.5 section of the openfoam-extend Subversion repository"
+    echo "  the directory where you have installed the Breeder_1.5 section "
+    echo "  of the openfoam-extend Subversion repository"
     exit -1
 fi
 
@@ -69,9 +74,9 @@ fi
 if [ ! -e $BREEDER_OSIG_TURBOMACHINERY_DIR/CMakeLists.txt ]
 then
     echo "Warning:"
-    echo "  Missing file: CMakeLists.txt under \$BREEDER_OSIG_TURBOMACHINERY_DIR. Stopping." 
+    echo "  Missing file: CMakeLists.txt under \$BREEDER_15_DIR/OSIG/TurboMachinery. Stopping." 
     echo "  A copy of CMakeLists.txt is available under $FOAM_TEST_HARNESS_DIR/CMakeFiles." 
-    echo "  Please make a copy of this file under your OpenFOAM installation directory \$BREEDER_OSIG_TURBOMACHINERY_DIR."
+    echo "  Please make a copy of this file under the directory \$BREEDER_15_DIR/OSIG/TurboMachinery."
     exit -1
 fi
 

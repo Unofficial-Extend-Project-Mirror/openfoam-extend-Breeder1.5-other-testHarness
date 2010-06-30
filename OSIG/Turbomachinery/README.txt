@@ -34,12 +34,11 @@
 Warning #1: Make sure your OpenFOAM environment is properly initialized before
             running the test harness.
 
-Warning #2: Make sure to create an environment variable called 
-            $BREEDER_OSIG_TURBOMACHINERY_DIR.
-            This environment variable must point to the base directory
-            of the TurboMachinery OSIG shared space from the Breeder_1.5
-	    directory of your local Subversion working copy.
-            Something like: /someAbsolutePath/Breeder_1.5/OSIG/TurboMachinery
+Warning #2: Make sure to create an environment variable called $BREEDER_15_DIR
+            This environment variable must point to the Breeder_1.5 directory
+	    of your local working copy of the openfoam-extend Subversion repository
+
+            Something like: export BREEDER_15_DIR=/someAbsolutePath/Breeder_1.5
 
 Warning #3: It is recommended to use cmake version 2.8.0 or newer for
             running the test harness.
@@ -57,8 +56,8 @@ a) You can set your local system identifier using the environment variable
 
 b) Install the CMakeLists.txt and CTestConfig.cmake files by executing the following commands:
 
-cp ./CMakeFiles/CMakeLists.txt $BREEDER_OSIG_TURBOMACHINERY_DIR
-cp ./CMakeFiles/CTestConfig.cmake.openfoam-extend $BREEDER_OSIG_TURBOMACHINERY_DIR/CTestConfig.cmake
+cp ./CMakeFiles/CMakeLists.txt $BREEDER_15_DIR/OSIG/TurboMachinery/CMakeLists.txt
+cp ./CMakeFiles/CTestConfig.cmake.openfoam-extend $BREEDER_15_DIR/OSIG/TurboMachinery/CTestConfig.cmake
 
 
 c) Run the test harness and push your results on the CDash server on openfoam-extend
@@ -78,7 +77,7 @@ cd ./runDir; ./Allclean
 
 Both Allrun_Experimental and Allrun_Nightly scripts will submit their results
 to the CDash server of your choice, as specified by the file
-$BREEDER_OSIG_TURBOMACHINERY_DIR/CTestConfig.cmake.
+$BREEDER_15_DIR/OSIG/TurboMachinery/CTestConfig.cmake
 
 To submit your results to the CDash server on openfoam-extend, just use
 the file CTestConfig.cmake.openfoam-extend. 
