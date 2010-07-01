@@ -134,6 +134,17 @@ set_property(
   PROPERTY LABELS Turbo_Libs-rotorStatorInterfaces-$ENV{WM_PROJECT_VERSION}
 )
 
+# We need the Breeder's simpleFunctionObjects library
+add_custom_target (Breeder_Libs-simpleFunctionObjects-$ENV{WM_PROJECT_VERSION} ALL
+  wmake libso
+  WORKING_DIRECTORY $ENV{BREEDER_15_DIR}/libraries/simpleFunctionObjects
+)
+set_property(
+  TARGET          Breeder_Libs-simpleFunctionObjects-$ENV{WM_PROJECT_VERSION}
+  PROPERTY LABELS Breeder_Libs-simpleFunctionObjects-$ENV{WM_PROJECT_VERSION}
+)
+
+
 # Compile the apps
 add_custom_target (Turbo_Apps-Utilities-$ENV{WM_PROJECT_VERSION} ALL
   wmake all
